@@ -12,15 +12,30 @@ public class Movement : MonoBehaviour {
 	public Vector3 camOffset = Vector3.zero;
 	public Camera cam;
     public bool active = false;
-    GameObject gameCtrlr;
+    GameControl gameCtrl;
     float h, v;
+
+    int maxSteps;
+    float[,] inputArray = new float[1800, 4];
 
 	// Use this for initialization
 	void Start () {
 		characterCtrlr = GetComponent<CharacterController> ();
-        gameCtrlr = GameObject.Find("GameControl");
-		camOffset = cam.transform.position - transform.position;
-	}
+        camOffset = cam.transform.position - transform.position;
+
+        GameObject gamecontrollerObj = GameObject.Find("GameControl");
+        gameCtrl = gamecontrollerObj.GetComponent<GameControl>();
+
+        //initialise array values.
+        for (int i = 0; i < gameCtrl.maxSteps; i++)
+        {
+            for (int ii = 0; ii < 4; ii++)
+            {
+                inputArray[i, ii] = 0;
+            }
+
+        }
+    }
 	
 	// Update is called once per frame
 	void Update () {
