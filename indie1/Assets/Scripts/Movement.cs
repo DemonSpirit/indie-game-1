@@ -11,19 +11,29 @@ public class Movement : MonoBehaviour {
 	public float gravity = 20f;
 	public Vector3 camOffset = Vector3.zero;
 	public Camera cam;
+    public bool active = false;
+    GameObject gameCtrlr;
+    float h, v;
 
 	// Use this for initialization
 	void Start () {
 		characterCtrlr = GetComponent<CharacterController> ();
-
+        gameCtrlr = GameObject.Find("GameControl");
 		camOffset = cam.transform.position - transform.position;
 	}
 	
 	// Update is called once per frame
 	void Update () {
+
+        if (active == true)
+        {
+            h = Input.GetAxis("Horizontal");
+            v = Input.GetAxis("Vertical");
+        } else
+        {
+
+        }
 		
-		float h = Input.GetAxis ("Horizontal");
-		float v = Input.GetAxis ("Vertical");
 
 		//call fmod event : footstep.event
 

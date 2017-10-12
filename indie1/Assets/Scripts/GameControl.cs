@@ -5,12 +5,14 @@ using UnityEngine;
 public class GameControl : MonoBehaviour {
     int maxSteps = 1800;
     int step = 0;
+    int layer = 0;
     public string gameState = "start";
     public float[,] inputArray = new float[1800 , 4];
 
 	// Use this for initialization
 	void Start () {
         gameState = "live";
+        layer++;
         //initialise array values.
         for (int i = 0; i < maxSteps; i++)
         {
@@ -34,6 +36,12 @@ public class GameControl : MonoBehaviour {
 
             case "playback":
                 break;
+
+            case "end":
+                step = 0;
+                layer++;
+                break;
+
         }
         
     }
