@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class GameControl : MonoBehaviour {
     public int maxSteps = 1800;
-    int step = 0;
-    int layer = 0;
+    public int step = 0;
+    public int layer = 0;
     public string gameState = "start";
     public float[,] inputArray = new float[1800 , 4];
     public GameObject playerPrefab;
@@ -13,13 +13,12 @@ public class GameControl : MonoBehaviour {
     public GameObject activeInst;
 	// Use this for initialization
 	void Start () {
-        gameState = "live";
-        layer++;
+        gameState = "start";
         
 	}
 	
 	// Update is called once per frame
-	void Update () {
+	void LateUpdate () {
         switch (gameState)
         {
             case "start":
@@ -31,8 +30,6 @@ public class GameControl : MonoBehaviour {
                 
                 break;
             case "live":
-                inputArray[step, 0] = Input.GetAxis("Horizontal");
-                inputArray[step, 1] = Input.GetAxis("Vertical");
                 step++;
                 if (step >= 1800) gameState = "end";
                 break;
@@ -41,7 +38,10 @@ public class GameControl : MonoBehaviour {
                 break;
 
             case "end":
-                activeInst.active = false;
+                activeInst.GetComponent<Movement>().active = false;
+             
+                
+                gameState = "start";
                 break;
 
         }

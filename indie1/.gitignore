@@ -1,41 +1,41 @@
 ###
 # Unity folders and files
 ###
-idie1/Assets/AssetStoreTools*
-idie1/Build/
-idie1/Library/
-idie1/LocalCache/
-idie1/Obj/
-idie1/Temp/
-idie1/UnityGenerated/
+indie1/Assets/AssetStoreTools*
+indie1/Build/
+indie1/Library/
+indie1/LocalCache/
+indie1/Obj/
+indie1/Temp/
+indie1/UnityGenerated/
 # file on crash reports
-idie1/sysinfo.txt
+indie1/sysinfo.txt
 # Unity3D generated meta files
-idie1/*.pidb.meta
+indie1/*.pidb.meta
 
 ###
 # VS/MD solution and project files
 ###
 ExportedObj/
-idie1/*.booproj
-idie1/*.csproj
-idie1/*.sln
-idie1/*.suo
-idie1/*.svd
-idie1/*.unityproj
-idie1/*.user
-idie1/*.userprefs
+indie1/*.booproj
+indie1/*.csproj
+indie1/*.sln
+indie1/*.suo
+indie1/*.svd
+indie1/*.unityproj
+indie1/*.user
+indie1/*.userprefs
 idie1/*.pidb
 idie1/.DS_Store
 
 ###
 # OS generated
 ###
-idie1/.DS_Store
-idie1/.DS_Store?
-idie1/._*
-idie1/.Spotlight-V100
-idie1/.Trashes
-idie1/Icon?
-idie1/ehthumbs.db
-idie1/Thumbs.db
+indie1/.DS_Store
+indie1/.DS_Store?
+indie1/._*
+indie1/.Spotlight-V100
+indie1/.Trashes
+indie1/Icon?
+indie1/ehthumbs.db
+indie1/Thumbs.db

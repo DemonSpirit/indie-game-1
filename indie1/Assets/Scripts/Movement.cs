@@ -12,18 +12,21 @@ public class Movement : MonoBehaviour {
 	public Vector3 camOffset = Vector3.zero;
 	public Camera cam;
     public bool active = false;
-    GameControl gameCtrl;
+    public GameControl gameCtrl;
     float h, v;
 
     int maxSteps;
     float[,] inputArray = new float[1800, 4];
+
+    // TO DO U NEED TO MAKE THE ARRAY AN ARRAY OF OBJECTS, SINCE EVERYTHING IS AN OBJECT WAOW
+    // WHEN U ARE CALLING THE INFORMATION MAKE USRE U CAST THE DATA SO THAT THE THING TACN TDO ITS TING.
 
 	// Use this for initialization
 	void Start () {
 		characterCtrlr = GetComponent<CharacterController> ();
         camOffset = cam.transform.position - transform.position;
 
-        GameObject gamecontrollerObj = GameObject.Find("GameControl");
+        GameObject gamecontrollerObj = GameObject.Find("GameController");
         gameCtrl = gamecontrollerObj.GetComponent<GameControl>();
 
         //initialise array values.
@@ -40,12 +43,19 @@ public class Movement : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 
-        if (active == true)
+        if (active == true && gameCtrl.gameState == "live")
         {
+            
             h = Input.GetAxis("Horizontal");
             v = Input.GetAxis("Vertical");
-        } else
+            inputArray[gameCtrl.step, 0] = h;
+            inputArray[gameCtrl.step, 1] = v;
+            inputArray[gameCtrl.step, 2] = transform.rotation;
+            
+        } else if (active == false && gameCtrl.gameState == "live")
         {
+            h = inputArray[gameCtrl.step, 0];
+            v = inputArray[gameCtrl.step, 1];
 
         }
 		
@@ -80,4 +90,10 @@ public class Movement : MonoBehaviour {
 	void SetCameraOffset()
 	{	cam.transform.position = transform.position + camOffset;
 	}
+
+    void DestroyCamera()
+    {
+        Transform cam = transform.GetChild(0);
+        Destroy(cam);
+    }
 }
